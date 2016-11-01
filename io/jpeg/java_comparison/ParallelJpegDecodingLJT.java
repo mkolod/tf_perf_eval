@@ -27,7 +27,7 @@ public class ParallelJpegDecodingLJT {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Running multi-threaded libjpeg-turbo benchmark in Java. Please wait.\n");
+        System.out.println("Running multi-threaded JPEG decode in Java. Please wait.\n");
         final int num = 100000;
         String fileName = "ElCapitan_256_by_256.jpg";
         // create a list of 20k copies of the same file, this is like the file name queue in TF
