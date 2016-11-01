@@ -38,12 +38,13 @@ public class ParallelJpegDecodingLJT {
                 map(path -> decodeJpeg(path).getWidth()).
                 collect(Collectors.toList());
         long end = System.currentTimeMillis();
-        float imagesPerSec = num / ((float) (end - start) / 1000);
+        double totalSec = (end - start) / 1000.0;
+        double imagesPerSec = num / totalSec;
         // divide by 2 due to HyperThreading
-        float imagesPerSecPerCore = imagesPerSec / (Runtime.getRuntime().availableProcessors() / 2);
-        System.out.printf("Images read: %d\n", imageWidths.size());
-        System.out.printf("Images per second: %.2f\n", imagesPerSec);
-        System.out.printf("Images per second per core: %.2f\n", imagesPerSecPerCore);
+        double imagesPerSecPerCore = imagesPerSec / (Runtime.getRuntime().availableProcessors() / 2);
+        System.out.printf("Running time: %.2f seconds\n", totalSec);        
+        System.out.printf("Read %d images\n", imageWidths.size());
+        System.out.printf("Images/second: %.2f\n", imagesPerSec);
+        System.out.printf("Images/second/core: %.2f\n", imagesPerSecPerCore);
     }
 }
-
